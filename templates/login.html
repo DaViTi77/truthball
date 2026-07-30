@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-4">
+        <div class="card bg-dark text-light border-secondary shadow">
+            <div class="card-header border-secondary text-center">
+                <h3>🔐 სისტემაში შესვლა</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('login') }}">
+                    {{ form.csrf_token }}
+                    
+                    <div class="mb-3">
+                        <label class="form-label">მომხმარებლის სახელი</label>
+                        {{ form.username(class="form-control bg-secondary text-light border-0", placeholder="Username") }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">პაროლი</label>
+                        {{ form.password(class="form-control bg-secondary text-light border-0", placeholder="Password") }}
+                    </div>
+
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-success fw-bold">🚀 შესვლა</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

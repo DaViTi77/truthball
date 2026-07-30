@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center mt-5">
+    <div class="col-md-6">
+        <div class="card bg-dark text-light border-secondary shadow">
+            <div class="card-header border-secondary text-center">
+                <h3>➕ ახალი ტრანსფერის დამატება</h3>
+            </div>
+            <div class="card-body">
+                <form method="POST" action="{{ url_for('add_transfer') }}">
+                    {{ form.csrf_token }}
+                    
+                    <div class="mb-3">
+                        <label class="form-label">ფეხბურთელის სახელი</label>
+                        {{ form.player_name(class="form-control bg-secondary text-light border-0", placeholder="მაგ: ხვიჩა კვარაცხელია") }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">რომელი გუნდიდან მიდის?</label>
+                        {{ form.from_club(class="form-control bg-secondary text-light border-0", placeholder="მაგ: Napoli") }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">რომელ გუნდში გადადის?</label>
+                        {{ form.to_club(class="form-control bg-secondary text-light border-0", placeholder="მაგ: Real Madrid") }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">ტრანსფერის ფასი / ტიპი</label>
+                        {{ form.fee_millions(class="form-control bg-secondary text-light border-0", placeholder="მაგ: €80M ან იჯარა") }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">კონტრაქტის ხანგრძლივობა (წლები)</label>
+                        {{ form.contract_years(class="form-control bg-secondary text-light border-0", placeholder="მაგ: 5 წელი ან 2031") }}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">წყარო (საიდანაა ინფო)</label>
+                        {{ form.source(class="form-control bg-secondary text-light border-0", placeholder="მაგ: Fabrizio Romano") }}
+                    </div>
+
+                    <div class="d-grid mt-4">
+                        <button type="submit" class="btn btn-warning fw-bold text-dark">🚀 ტრანსფერის გამოქვეყნება</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
